@@ -1,6 +1,7 @@
 package calculator;
 
 import java.awt.*;
+import java.awt.event.*;
 
 public class Calculator extends Frame {
 	public Calculator() {
@@ -97,5 +98,13 @@ public class Calculator extends Frame {
 	setSize(300,500);
 	setTitle("°è»ê±â");
 	
+	addWindowListener(new WindowAdapter() {
+		public void windowClosing(WindowEvent e) {
+			System.exit(0);
+		}
+	});
+	
+	
+		}
 	}
-}
+	
