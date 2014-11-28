@@ -4,7 +4,10 @@ import java.awt.*;
 import java.awt.event.*;
 
 public class Calculator extends Frame implements ActionListener {
-	double a=0,b=0,c=0,cal=0;
+	int c=0;
+	long cal=0;
+	double num1,num2,value;
+	String str1,str2;
 	int or= 0;
 	Panel panel = new Panel();
 	Button btn1 = new Button("보기(V)");
@@ -40,7 +43,7 @@ public class Calculator extends Frame implements ActionListener {
 	Button btn30 = new Button("+");
 	Button btn31 = new Button("종료");
 	Container menu = new Container();
-	TextField text = new TextField("0");
+	TextField text = new TextField("");
 	Container but1 = new Container();
 	Container but2 = new Container();
 	Container but3 = new Container();
@@ -87,10 +90,11 @@ public class Calculator extends Frame implements ActionListener {
 	but3.add(btn29);
 	but3.add(btn28);
 	but3.add(btn27);
-	but4.add(panel);
 	but3.add(but4);
-	but3.add(btn31);
-
+	but3.add(panel);
+	but3.add(panel);
+	
+	
 	this.add(menu);
 	this.add(text);
 	this.add(but1);
@@ -107,17 +111,18 @@ public class Calculator extends Frame implements ActionListener {
 	btn27.addActionListener(new MyListener());
 	btn22.addActionListener(new MyListener());
 	btn17.addActionListener(new MyListener());
-	btn34.addActionListener(new MyListener());
-	btn24.addActionListener(new MyListener());
-	btn25.addActionListener(new MyListener());
-	btn19.addActionListener(new MyListener());
-	btn20.addActionListener(new MyListener());
-	btn21.addActionListener(new MyListener());
-	btn14.addActionListener(new MyListener());
-	btn15.addActionListener(new MyListener());
-	btn16.addActionListener(new MyListener());
-	btn28.addActionListener(new MyListener());
+	btn34.addActionListener(new number());
+	btn24.addActionListener(new number());
+	btn25.addActionListener(new number());
+	btn19.addActionListener(new number());
+	btn20.addActionListener(new number());
+	btn21.addActionListener(new number());
+	btn14.addActionListener(new number());
+	btn15.addActionListener(new number());
+	btn16.addActionListener(new number());
+	btn28.addActionListener(new number());
 	btn10.addActionListener(new MyListener());
+
 	
 	addWindowListener(new WindowAdapter() {
 		public void windowClosing(WindowEvent e) {
@@ -125,158 +130,174 @@ public class Calculator extends Frame implements ActionListener {
 		}
 	});
 }
-	
+
 	class MyListener implements ActionListener {
 	public void actionPerformed(ActionEvent e) {
 		if (e.getSource() == btn30){
 			c = 1;
-			text.setText(String.valueOf(a) + String.valueOf(" + "));
+			str1 = text.getText();
+			num1 = Double.parseDouble(str1);
+			text.setText("");
+			or++;
 		}
 		else if (e.getSource() == btn26){
 			c = 2;
-			text.setText(String.valueOf(a) + String.valueOf(" - "));
+			str1 = text.getText();
+			num1 = Double.parseDouble(str1);
+			text.setText("");
+			or++;
 			}
 		else if (e.getSource() == btn22){
 			c = 3;
-			text.setText(String.valueOf(a) + String.valueOf(" * "));
+			str1 = text.getText();
+			num1 = Double.parseDouble(str1);
+			text.setText("");
+			or++;
 		}
 		else if (e.getSource() == btn17){
 			c = 4;
-			text.setText(String.valueOf(a) + String.valueOf(" / "));
+			str1 = text.getText();
+			num1 = Double.parseDouble(str1);
+			text.setText("");
+			or++;
+		}
+		else if(e.getSource() == btn10) {
+			text.setText("");
+		}
+		else if(e.getSource() == btn31) {
+			
 		}
 		else if (e.getSource() == btn27) {
 			if(c == 1) {
-				cal = a + b;
-				text.setText(String.valueOf(a) + String.valueOf(" + ") + String.valueOf(b) + String.valueOf(" = ") + String.valueOf(cal));
+				str2 = text.getText();
+				num2 = Double.parseDouble(str2);
+				value = num1 + num2;
+				text.setText(num1 + " + " + num2 + " = " + value);
+				or=2;
 			}
 			if(c == 2) {
-				cal = a - b;
-				text.setText(String.valueOf(a) + String.valueOf(" - ") + String.valueOf(b) + String.valueOf(" = ") + String.valueOf(cal));
+				str2 = text.getText();
+				num2 = Double.parseDouble(str2);
+				value = num1 - num2;
+				text.setText(num1 + " - " + num2 + " = " + value);
+				or=2;
 			}
 			if(c == 3) {
-				cal = a * b;
-				text.setText(String.valueOf(a) + String.valueOf(" * ") + String.valueOf(b) + String.valueOf(" = ") + String.valueOf(cal));
+				str2 = text.getText();
+				num2 = Double.parseDouble(str2);
+				value = num1 * num2;
+				text.setText(num1 + " * " + num2 + " = " + value);
+				or=2;
 			}
 			if(c == 4) {
-				cal = a / b;
-				text.setText(String.valueOf(a) + String.valueOf(" / ") + String.valueOf(b) + String.valueOf(" = ") + String.valueOf(cal));
+				str2 = text.getText();
+				num2 = Double.parseDouble(str2);
+				value = num1 / num2;
+				text.setText(num1 + " / " + num2 + " = " + value);
+				or=2;
 			}
-			or = 0;
 		}
 		
-		else if (e.getSource() == btn34){
-			if(or == 0){
-				a = 1;
-				text.setText(String.valueOf(a));
-				or++;
-			}
-			else{
-				b = 1;
-				text.setText(String.valueOf(a));
-			}
-			}
-		else if (e.getSource() == btn24){
-			if(or == 0){
-				a = 2;
-				text.setText(String.valueOf(a));
-				or++;
-			}
-			else{
-				b = 2;
-			}
-			}
-		else if (e.getSource() == btn25){
-			if(or == 0){
-				a = 3;
-				text.setText(String.valueOf(a));
-				or++;
-			}
-			else{
-				b = 3;
-			}
-			}
-		else if (e.getSource() == btn19){
-			if(or == 0){
-				a = 4;
-				text.setText(String.valueOf(a));
-				or++;
-			}
-			else{
-				b = 4;
-			}
-			}
-		else if (e.getSource() == btn20){
-			if(or == 0){
-				a = 5;
-				text.setText(String.valueOf(a));
-				or++;
-			}
-			else{
-				b = 5;
-			}
-			}
-		else if (e.getSource() == btn21){
-			if(or == 0){
-				a = 6;
-				text.setText(String.valueOf(a));
-				or++;
-			}
-			else{
-				b = 6;
-			}
-			}
-		else if (e.getSource() == btn14){
-			if(or == 0){
-				a = 7;
-				text.setText(String.valueOf(a));
-				or++;
-			}
-			else{
-				b = 7;
-			}
-			}
-		else if (e.getSource() == btn15){
-			if(or == 0){
-				a = 8;
-				text.setText(String.valueOf(a));
-				or++;
-			}
-			else{
-				b = 8;
-			}
-			}
-		else if (e.getSource() == btn16){
-			if(or == 0){
-				a = 9;
-				text.setText(String.valueOf(a));
-				or++;
-			}
-			else{
-				b = 9;
-			}
-			}
-		else if (e.getSource() == btn28){
-			if(or == 0){
-				a = 0;
-				text.setText(String.valueOf(a));
-				or++;
-			}
-			else{
-				b = 0;
-				}
-			}
-		else if (e.getSource() == btn10){
-			double a=0,b=0,or=0,cal=0;
-			text.setText("");
-			}
-		}
-
 	}
+}
 
 	@Override
 	public void actionPerformed(ActionEvent arg0) {
 		// TODO Auto-generated method stub
 		
 	}
+	class number implements ActionListener {
+		public void actionPerformed(ActionEvent e) {
+			if(or == 0) {
+			if (e.getSource() == btn34) {
+				str1="1";
+				text.setText(text.getText() + str1);
+			}
+			else if(e.getSource() == btn24) {
+				str1 ="2";
+				text.setText(text.getText() + str1);
+			}
+			else if(e.getSource() == btn25) {
+				str1 ="3";
+				text.setText(text.getText() + str1);
+			}
+			else if(e.getSource() == btn19) {
+				str1 ="4";
+				text.setText(text.getText() + str1);
+			}
+			else if(e.getSource() == btn20) {
+				str1 ="5";
+				text.setText(text.getText() + str1);
+			}
+			else if(e.getSource() == btn21) {
+				str1 ="6";
+				text.setText(text.getText() + str1);
+			}
+			else if(e.getSource() == btn14) {
+				str1 ="7";
+				text.setText(text.getText() + str1);
+			}
+			else if(e.getSource() == btn15) {
+				str1 ="8";
+				text.setText(text.getText() + str1);
+			}
+			else if(e.getSource() == btn16) {
+				str1 ="9";
+				text.setText(text.getText() + str1);
+			}
+			else if(e.getSource() == btn28) {
+				str1 ="0";
+				text.setText(text.getText() + str1);
+			}
+		}
+			else if(or==1){
+				if (e.getSource() == btn34) {
+					str2="1";
+					text.setText(text.getText() + str2);
+				}
+				else if(e.getSource() == btn24) {
+					str2 ="2";
+					text.setText(text.getText() + str2);
+				}
+				else if(e.getSource() == btn25) {
+					str2 ="3";
+					text.setText(text.getText() + str2);
+				}
+				else if(e.getSource() == btn19) {
+					str2 ="4";
+					text.setText(text.getText() + str2);
+				}
+				else if(e.getSource() == btn20) {
+					str2 ="5";
+					text.setText(text.getText() + str2);
+				}
+				else if(e.getSource() == btn21) {
+					str2 ="6";
+					text.setText(text.getText() + str2);
+				}
+				else if(e.getSource() == btn14) {
+					str2 ="7";
+					text.setText(text.getText() + str2);
+				}
+				else if(e.getSource() == btn15) {
+					str2 ="8";
+					text.setText(text.getText() + str2);
+				}
+				else if(e.getSource() == btn16) {
+					str2 ="9";
+					text.setText(text.getText() + str2);
+				}
+				else if(e.getSource() == btn28) {
+					str2 ="0";
+					text.setText(text.getText() + str2);
+				}
+			}
+			else if(or==2){
+				text.setText("");
+				or=0;
+			}
+		
+		}
+
+	}
 }
-	
