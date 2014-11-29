@@ -122,6 +122,8 @@ public class Calculator extends Frame implements ActionListener {
 	btn16.addActionListener(new number());
 	btn28.addActionListener(new number());
 	btn10.addActionListener(new MyListener());
+	btn11.addActionListener(new MyListener());
+	btn9.addActionListener(new MyListener());
 
 	
 	addWindowListener(new WindowAdapter() {
@@ -163,9 +165,27 @@ public class Calculator extends Frame implements ActionListener {
 		}
 		else if(e.getSource() == btn10) {
 			text.setText("");
+			or=0;
 		}
-		else if(e.getSource() == btn31) {
-			
+		else if(e.getSource() == btn11) {
+			text.setText("");
+			or=0;
+		}
+		else if(e.getSource() == btn9) {
+			if(or==0) {
+			str1 = text.getText();
+			num1 = Integer.parseInt(str1);
+			num1 = num1 / 10;
+			str1 = Integer.toString((int) num1);
+			text.setText(str1);
+			}
+			else if(or==1) {
+			str2 = text.getText();
+			num2 = Integer.parseInt(str2);
+			num2 = num2 / 10;
+			str2 = Integer.toString((int) num2);
+			text.setText(str2);
+			}
 		}
 		else if (e.getSource() == btn27) {
 			if(c == 1) {
@@ -208,95 +228,146 @@ public class Calculator extends Frame implements ActionListener {
 	}
 	class number implements ActionListener {
 		public void actionPerformed(ActionEvent e) {
-			if(or == 0) {
 			if (e.getSource() == btn34) {
+				if(or==0){
 				str1="1";
 				text.setText(text.getText() + str1);
+				}
+				else if(or==1){
+				str2="1";
+				text.setText(text.getText() + str2);
+				}	
+				else if(or==2){
+				text.setText("1");
+				or=0;
+				}
 			}
 			else if(e.getSource() == btn24) {
-				str1 ="2";
+				if(or==0){
+				str1="2";
 				text.setText(text.getText() + str1);
+				}
+				else if(or==1){
+				str2="2";
+				text.setText(text.getText() + str2);
+				}	
+				else if(or==2){
+				text.setText("2");
+				or=0;
+				}
 			}
 			else if(e.getSource() == btn25) {
-				str1 ="3";
+				if(or==0){
+				str1="3";
 				text.setText(text.getText() + str1);
+				}
+				else if(or==1){
+				str2="3";
+				text.setText(text.getText() + str2);
+				}	
+				else if(or==2){
+				text.setText("3");
+				or=0;
+				}
 			}
 			else if(e.getSource() == btn19) {
-				str1 ="4";
+				if(or==0){
+				str1="4";
 				text.setText(text.getText() + str1);
+				}
+				else if(or==1){
+				str2="4";
+				text.setText(text.getText() + str2);
+				}	
+				else if(or==2){
+				text.setText("4");
+				or=0;
+				}
 			}
 			else if(e.getSource() == btn20) {
-				str1 ="5";
+				if(or==0){
+				str1="5";
 				text.setText(text.getText() + str1);
+				}
+				else if(or==1){
+				str2="5";
+				text.setText(text.getText() + str2);
+				}	
+				else if(or==2){
+				text.setText("5");
+				or=0;
+				}
 			}
 			else if(e.getSource() == btn21) {
-				str1 ="6";
+				if(or==0){
+				str1="6";
 				text.setText(text.getText() + str1);
+				}
+				else if(or==1){
+				str2="61";
+				text.setText(text.getText() + str2);
+				}	
+				else if(or==2){
+				text.setText("6");
+				or=0;
+				}
 			}
 			else if(e.getSource() == btn14) {
-				str1 ="7";
+				if(or==0){
+				str1="7";
 				text.setText(text.getText() + str1);
+				}
+				else if(or==1){
+				str2="7";
+				text.setText(text.getText() + str2);
+				}	
+				else if(or==2){
+				text.setText("7");
+				or=0;
+				}
 			}
 			else if(e.getSource() == btn15) {
-				str1 ="8";
+				if(or==0){
+				str1="8";
 				text.setText(text.getText() + str1);
+				}
+				else if(or==1){
+				str2="8";
+				text.setText(text.getText() + str2);
+				}	
+				else if(or==2){
+				text.setText("8");
+				or=0;
+				}
 			}
 			else if(e.getSource() == btn16) {
-				str1 ="9";
+				if(or==0){
+				str1="9";
 				text.setText(text.getText() + str1);
+				}
+				else if(or==1){
+				str2="9";
+				text.setText(text.getText() + str2);
+				}	
+				else if(or==2){
+				text.setText("9");
+				or=0;
+				}
 			}
 			else if(e.getSource() == btn28) {
-				str1 ="0";
+				if(or==0){
+				str1="0";
 				text.setText(text.getText() + str1);
-			}
-		}
-			else if(or==1){
-				if (e.getSource() == btn34) {
-					str2="1";
-					text.setText(text.getText() + str2);
 				}
-				else if(e.getSource() == btn24) {
-					str2 ="2";
-					text.setText(text.getText() + str2);
-				}
-				else if(e.getSource() == btn25) {
-					str2 ="3";
-					text.setText(text.getText() + str2);
-				}
-				else if(e.getSource() == btn19) {
-					str2 ="4";
-					text.setText(text.getText() + str2);
-				}
-				else if(e.getSource() == btn20) {
-					str2 ="5";
-					text.setText(text.getText() + str2);
-				}
-				else if(e.getSource() == btn21) {
-					str2 ="6";
-					text.setText(text.getText() + str2);
-				}
-				else if(e.getSource() == btn14) {
-					str2 ="7";
-					text.setText(text.getText() + str2);
-				}
-				else if(e.getSource() == btn15) {
-					str2 ="8";
-					text.setText(text.getText() + str2);
-				}
-				else if(e.getSource() == btn16) {
-					str2 ="9";
-					text.setText(text.getText() + str2);
-				}
-				else if(e.getSource() == btn28) {
-					str2 ="0";
-					text.setText(text.getText() + str2);
-				}
-			}
-			else if(or==2){
-				text.setText("");
+				else if(or==1){
+				str2="0";
+				text.setText(text.getText() + str2);
+				}	
+				else if(or==2){
+				text.setText("0");
 				or=0;
+				}
 			}
-		
 		}
 
 	}
